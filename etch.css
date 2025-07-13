@@ -5,16 +5,22 @@ html,body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .div{
     height: 20px;
     width: 20px;
     background-color: grey;
+    transition: 0.05s;
 }
 
 .container{
     height: auto;
     display: flex;
     flex-wrap: wrap;
+}
+
+.hovered{
+    background-color: purple;
 }
