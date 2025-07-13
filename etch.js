@@ -2,6 +2,15 @@ const container = document.querySelector('.container');
 const max = 99;
 const btn = document.querySelector('button');
 
+function randomColor(){
+    let symbols = '0123456789ABCDEF';
+    let color = '#';
+    for(let i = 0; i<6; i++){
+        color += symbols[Math.floor(Math.random()*16)];
+    }
+    return color;
+}
+
 function createDiv(number){
     container.style.width = number * 20 + 'px';
     if(number >= max){
@@ -23,12 +32,20 @@ function createDiv(number){
 
 function trail(){
     const divs = document.querySelectorAll('.div');
+
     divs.forEach(some=>{
         some.addEventListener('mouseover',(e)=>{
-            e.target.classList.add('hovered');
+            // e.target.classList.add('hovered');
+            e.target.style.backgroundColor = randomColor();
+            let currentOpacity = parseFloat(e.target.style.opacity || 0);
+            if(currentOpacity<1){
+                currentOpacity+= 0.1;
+                e.target.style.opacity = currentOpacity;
+            }
         })
         some.addEventListener('mouseout',(e)=>{
-            e.target.classList.remove('hovered');
+            // e.target.classList.remove('hovered');
+            e.target.style.backgroundColor = randomColor();
         })
     })
 }
