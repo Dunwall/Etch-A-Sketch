@@ -1,12 +1,16 @@
 const container = document.querySelector('.container');
 const max = 99;
+const btn = document.querySelector('button');
 
 function createDiv(number){
     container.style.width = number * 20 + 'px';
     if(number >= max){
-        alert('Please input a number smaller lesser than 100');
+        alert('Please input a number lesser than 100');
     }
     else if(number<max){
+    while(container.firstChild){
+        container.removeChild(container.firstChild);
+    }
     for(let i = 0; i<number*number; i++){
         let newDiv = document.createElement('div');
         container.appendChild(newDiv);
@@ -29,4 +33,7 @@ function trail(){
     })
 }
 
-createDiv(10);
+btn.addEventListener('click',()=>{
+    const input = prompt('Enter Number of Squares below 100');
+    createDiv(input);
+})
